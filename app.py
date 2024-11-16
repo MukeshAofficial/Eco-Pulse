@@ -22,6 +22,19 @@ genai.configure(api_key="AIzaSyDqYe2MmvwxHZR8WBeefRx1eagXF-dydyA")
 def index():
     return render_template('index.html')
 
+@app.route('/blog1')
+def blog1():
+    return render_template('blog1.html')
+
+@app.route('/blog2')
+def blog2():
+    return render_template('blog2.html')
+
+@app.route('/blog3')
+def blog3():
+    return render_template('blog3.html')
+
+
 @app.route('/air')
 def air():
         return render_template('air.html')
