@@ -1,0 +1,359 @@
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Eco-Pulse</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet"/>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800">
+    <!-- Navbar -->
+    <nav class="bg-green-700 text-white py-4">
+        <div class="container mx-auto px-4 flex justify-between items-center">
+            <a class="text-2xl font-bold" href="#">Eco-Pulse</a>
+            <div class="space-x-4">
+                <a class="hover:text-green-300 transition-colors" href="#">Home</a>
+                <a class="hover:text-green-300 transition-colors" href="#">About</a>
+                <a class="hover:text-green-300 transition-colors" href="#">Services</a>
+                <a class="hover:text-green-300 transition-colors" href="#">Contact</a>
+            </div>
+        </div>
+    </nav>
+    <!-- Hero Section -->
+    <section class="relative bg-green-500 h-screen flex items-center justify-center text-center text-white">
+        <div>
+            <h1 class="text-5xl font-bold mb-4">"The Earth is what we all have in common."</h1>
+            <p class="text-xl mb-8">Together, we can make a difference.</p>
+            <a class="bg-green-700 hover:bg-green-900 text-white font-bold py-3 px-6 rounded-full transition-transform transform hover:scale-105" href="#get-involved">Get Involved</a>
+        </div>
+    </section>
+    <!-- Features Section -->
+    <section class="py-16 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">Features</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-green-100 rounded-lg p-6 shadow-lg hover:bg-green-200 cursor-pointer transition duration-300 ease-in-out transform hover:scale-105 animate__animated animate__fadeIn">
+                    <a href="/video">
+                        <i class="fas fa-video text-4xl mb-4"></i>
+                        <h3 class="text-xl font-bold mb-2">Educational Videos</h3>
+                        <p>Watch educational videos on environmental sustainability and green practices.</p>
+                    </a>
+                </div>
+                <div class="bg-green-100 rounded-lg p-6 shadow-lg hover:bg-green-200 cursor-pointer transition duration-300 ease-in-out transform hover:scale-105 animate__animated animate__fadeIn">
+                    <a href="/news">
+                        <i class="fas fa-newspaper text-4xl mb-4"></i>
+                        <h3 class="text-xl font-bold mb-2">Environmental News</h3>
+                        <p>Stay updated with the latest news on environmental sustainability.</p>
+                    </a>
+                </div>
+                <div class="bg-green-100 rounded-lg p-6 shadow-lg hover:bg-green-200 cursor-pointer transition duration-300 ease-in-out transform hover:scale-105 animate__animated animate__fadeIn">
+                    <a href="/chatbot">
+                        <i class="fas fa-robot text-4xl mb-4"></i>
+                        <h3 class="text-xl font-bold mb-2">Sustainability Chatbot</h3>
+                        <p>Ask questions about sustainability and get instant answers through our chatbot.</p>
+                    </a>
+                </div>
+                <div class="bg-green-100 rounded-lg p-6 shadow-lg hover:bg-green-200 cursor-pointer transition duration-300 ease-in-out transform hover:scale-105 animate__animated animate__fadeIn">
+                    <a href="/gpt">
+                        <i class="fas fa-microphone-alt text-4xl mb-4"></i>
+                        <h3 class="text-xl font-bold mb-2">Voicebot for Sustainability</h3>
+                        <p>Interact with our voicebot to learn more about eco-friendly practices.</p>
+                    </a>
+                </div>
+                <div class="bg-green-100 rounded-lg p-6 shadow-lg hover:bg-green-200 cursor-pointer transition duration-300 ease-in-out transform hover:scale-105 animate__animated animate__fadeIn">
+                    <a href="/map">
+                        <i class="fas fa-map-marked-alt text-4xl mb-4"></i>
+                        <h3 class="text-xl font-bold mb-2">Waste Collection Map</h3>
+                        <p>Locate nearby waste collection points for recycling and sustainable disposal.</p>
+                    </a>
+                </div>
+                <div class="bg-green-100 rounded-lg p-6 shadow-lg hover:bg-green-200 cursor-pointer transition duration-300 ease-in-out transform hover:scale-105 animate__animated animate__fadeIn">
+                    <a href="/scan">
+                        <i class="fas fa-recycle text-4xl mb-4"></i>
+                        <h3 class="text-xl font-bold mb-2">EcycleWise</h3>
+                        <p>Get personalized recycling and upcycling tips powered by AI based on the image of the item you upload.</p>
+                    </a>
+                </div>
+                <div class="bg-green-100 rounded-lg p-6 shadow-lg hover:bg-green-200 cursor-pointer transition duration-300 ease-in-out transform hover:scale-105 animate__animated animate__fadeIn">
+                    <a href="/sell">
+                        <i class="fas fa-laptop-house text-4xl mb-4"></i>
+                        <h3 class="text-xl font-bold mb-2">EcoExchange</h3>
+                        <p>Buy and sell upcycled products, supporting a circular economy.</p>
+                    </a>
+                </div>
+                <div class="bg-green-100 rounded-lg p-6 shadow-lg hover:bg-green-200 cursor-pointer transition duration-300 ease-in-out transform hover:scale-105 animate__animated animate__fadeIn">
+                    <a href="/air">
+                        <i class="fas fa-chart-line text-4xl mb-4"></i>
+                        <h3 class="text-xl font-bold mb-2">Dashboard</h3>
+                        <p>Access weather-related information and air quality dashboard.</p>
+                    </a>
+                </div>
+                <div class="bg-green-100 rounded-lg p-6 shadow-lg hover:bg-green-200 cursor-pointer transition duration-300 ease-in-out transform hover:scale-105 animate__animated animate__fadeIn">
+                    <a href="/quiz">
+                        <i class="fas fa-question-circle text-4xl mb-4"></i>
+                        <h3 class="text-xl font-bold mb-2">Sustainability Quiz</h3>
+                        <p>Test your knowledge on environmental sustainability with our quiz.</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+  <!-- Sustainability Tips -->
+  <section class="py-16 bg-white">
+   <div class="container mx-auto px-4">
+    <h2 class="text-3xl font-bold text-center mb-12">
+     Sustainability Tips
+    </h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+     <div class="bg-gray-100 p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
+      <img alt="Energy saving tip image" class="w-full h-40 object-cover rounded-lg mb-4" height="200" src="https://storage.googleapis.com/a1aa/image/f8UY3LgrfBmlIUdS5M3JXYMcfS6jpZmJttffYPpaemzeEnp4JA.jpg" width="300"/>
+      <h3 class="text-xl font-bold mb-2">
+       Save Energy
+      </h3>
+      <p>
+       Turn off lights and unplug devices when not in use to save energy.
+      </p>
+     </div>
+     <div class="bg-gray-100 p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
+      <img alt="Waste reduction tip image" class="w-full h-40 object-cover rounded-lg mb-4" height="200" src="https://storage.googleapis.com/a1aa/image/SlpqaumEO2KIC9FvplQ6TlwCWKIfC8hjAWme4apnep4McminA.jpg" width="300"/>
+      <h3 class="text-xl font-bold mb-2">
+       Reduce Waste
+      </h3>
+      <p>
+       Use reusable bags, bottles, and containers to minimize waste.
+      </p>
+     </div>
+     <div class="bg-gray-100 p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
+      <img alt="Water conservation tip image" class="w-full h-40 object-cover rounded-lg mb-4" height="200" src="https://storage.googleapis.com/a1aa/image/5XIOVAom0MJzFBfOAp21eizLOeJ2frQJmJz41IWoAucg4MFPB.jpg" width="300"/>
+      <h3 class="text-xl font-bold mb-2">
+       Conserve Water
+      </h3>
+      <p>
+       Fix leaks and take shorter showers to conserve water.
+      </p>
+     </div>
+    </div>
+   </div>
+  </section>
+  <!-- Resource Library -->
+  <section class="py-16 bg-gray-100">
+   <div class="container mx-auto px-4">
+    <h2 class="text-3xl font-bold text-center mb-12">
+     Blogs
+    </h2>
+    <div class="mb-8">
+     <input class="w-full p-4 rounded-lg shadow-lg focus:outline-none focus:ring-2 focus:ring-green-500" placeholder="Search Blogs..." type="text"/>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+     <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
+      <img alt="Article image" class="w-full h-40 object-cover rounded-lg mb-4" height="200" src="https://storage.googleapis.com/a1aa/image/njbeosGXzozwHymFc90SGpewyG3pZdZ5NnBaejZqX6Q5lAjnA.jpg" width="300"/>
+      <h3 class="text-xl font-bold mb-2">
+        The Importance of Reforestation
+      </h3>
+      <p>
+        Reforestation plays a critical role in restoring ecosystems, enhancing biodiversity, and combating climate change. By planting trees, we can help absorb carbon emissions and restore balance to the environment.      </p>
+     </div>
+     <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
+      <img alt="Book image" class="w-full h-40 object-cover rounded-lg mb-4" height="200" src="https://storage.googleapis.com/a1aa/image/GKUn3nrfKaQHRaXqa1vygPsv4SPT7NAvxjDmlT2z2tZzKw4JA.jpg" width="300"/>
+      <h3 class="text-xl font-bold mb-2">
+        Waste and Pollution Reduction
+      </h3>
+      <p>
+        Reducing waste and pollution is vital to preserving natural resources and protecting public health. Through sustainable practices like recycling and reducing consumption, we can minimize environmental damage.    </p>
+     </div>
+     <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
+      <img alt="Documentary image" class="w-full h-40 object-cover rounded-lg mb-4" height="200" src="https://storage.googleapis.com/a1aa/image/Lc1cl3nU8676KF6VJeQTeDX4tdXCbLwOQnlJMQ5XY33WagxTA.jpg" width="300"/>
+      <h3 class="text-xl font-bold mb-2">
+        Carbon Footprint Reduction
+      </h3>
+      <p>
+        Lowering our carbon footprint is essential for mitigating climate change and reducing global warming effects. By adopting energy-efficient technologies and sustainable transportation, we can significantly cut emissions.
+
+
+
+
+
+
+    </p>
+     </div>
+    </div>
+   </div>
+  </section>
+  <!-- Community Events -->
+  <section class="py-16 bg-white">
+   <div class="container mx-auto px-4">
+    <h2 class="text-3xl font-bold text-center mb-12">
+     Community Events
+    </h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+     <div class="bg-gray-100 p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
+      <h3 class="text-xl font-bold mb-2">
+       Beach Clean-Up
+      </h3>
+      <p>
+       Join us for a beach clean-up event to help keep our oceans clean.
+      </p>
+      <button class="mt-4 bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-full transition-transform transform hover:scale-105">
+       Register
+      </button>
+     </div>
+     <div class="bg-gray-100 p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
+      <h3 class="text-xl font-bold mb-2">
+       Tree Planting
+      </h3>
+      <p>
+       Help us plant trees in the community to promote a greener future.
+      </p>
+      <button class="mt-4 bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-full transition-transform transform hover:scale-105">
+       Register
+      </button>
+     </div>
+    </div>
+   </div>
+  </section>
+  <!-- Impact Dashboard -->
+  <section class="py-16 bg-gray-100">
+   <div class="container mx-auto px-4">
+    <h2 class="text-3xl font-bold text-center mb-12">
+     Impact Dashboard
+    </h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+     <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
+      <h3 class="text-xl font-bold mb-2">
+       Carbon Savings
+      </h3>
+      <p class="text-4xl font-bold">
+       1,234 kg
+      </p>
+     </div>
+     <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
+      <h3 class="text-xl font-bold mb-2">
+       Trees Planted
+      </h3>
+      <p class="text-4xl font-bold">
+       567
+      </p>
+     </div>
+     <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
+      <h3 class="text-xl font-bold mb-2">
+       Waste Diverted
+      </h3>
+      <p class="text-4xl font-bold">
+       890 kg
+      </p>
+     </div>
+    </div>
+   </div>
+  </section>
+  <!-- Engagement Challenges -->
+  <section class="py-16 bg-white">
+   <div class="container mx-auto px-4">
+    <h2 class="text-3xl font-bold text-center mb-12">
+     Engagement Challenges
+    </h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+     <div class="bg-gray-100 p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
+      <h3 class="text-xl font-bold mb-2">
+       Zero-Waste Challenge
+      </h3>
+      <p>
+       Commit to producing no waste for a month and track your progress.
+      </p>
+      <div class="mt-4 bg-gray-300 rounded-full h-4">
+       <div class="bg-green-500 h-4 rounded-full" style="width: 50%;">
+       </div>
+      </div>
+     </div>
+     <div class="bg-gray-100 p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
+      <h3 class="text-xl font-bold mb-2">
+       Plant-a-Tree Challenge
+      </h3>
+      <p>
+       Plant a tree and help us reach our goal of 1,000 trees planted.
+      </p>
+      <div class="mt-4 bg-gray-300 rounded-full h-4">
+       <div class="bg-green-500 h-4 rounded-full" style="width: 75%;">
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+  </section>
+  <!-- Newsletter Signup -->
+  <section class="py-16 bg-gray-100">
+   <div class="container mx-auto px-4">
+    <h2 class="text-3xl font-bold text-center mb-12">
+     Newsletter Signup
+    </h2>
+    <div class="max-w-lg mx-auto bg-white p-8 rounded-lg shadow-lg">
+     <form>
+      <div class="mb-4">
+       <label class="block text-gray-700 font-bold mb-2" for="email">
+        Email Address
+       </label>
+       <input class="w-full p-4 rounded-lg shadow-lg focus:outline-none focus:ring-2 focus:ring-green-500" id="email" placeholder="Enter your email" type="email"/>
+      </div>
+      <button class="w-full bg-green-500 hover:bg-green-700 text-white font-bold py-3 px-6 rounded-full transition-transform transform hover:scale-105" type="submit">
+       Subscribe
+      </button>
+     </form>
+    </div>
+   </div>
+  </section>
+  <!-- Footer -->
+  <footer class="py-8 bg-green-700 text-white">
+   <div class="container mx-auto px-4">
+    <div class="flex flex-col md:flex-row justify-between items-center">
+     <div class="mb-4 md:mb-0">
+      <a class="text-2xl font-bold" href="#">
+       Eco-Pulse
+      </a>
+     </div>
+     <div class="flex space-x-4">
+      <a class="hover:text-green-300 transition-colors" href="#">
+       <i class="fab fa-facebook-f">
+       </i>
+      </a>
+      <a class="hover:text-green-300 transition-colors" href="#">
+       <i class="fab fa-twitter">
+       </i>
+      </a>
+      <a class="hover:text-green-300 transition-colors" href="#">
+       <i class="fab fa-instagram">
+       </i>
+      </a>
+      <a class="hover:text-green-300 transition-colors" href="#">
+       <i class="fab fa-linkedin-in">
+       </i>
+      </a>
+     </div>
+    </div>
+    <div class="mt-8 text-center text-gray-300">
+     <p>
+      © 2023 Eco-Pulse. All rights reserved.
+     </p>
+     <p>
+      <a class="hover:text-white transition-colors" href="#">
+       About Us
+      </a>
+      |
+      <a class="hover:text-white transition-colors" href="#">
+       Contact
+      </a>
+      |
+      <a class="hover:text-white transition-colors" href="#">
+       Legal
+      </a>
+     </p>
+    </div>
+   </div>
+  </footer>
+ </body>
+</html>

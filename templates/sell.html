@@ -1,0 +1,240 @@
+<html>
+<head>
+    <title>EcoExchange - Sustainable E-commerce Platform</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+        }
+        #sell-product-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+        }
+        #sell-product-form {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            width: 300px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        #success-message {
+            display: none;
+            position: fixed;
+            top: 20%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #4caf50;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <header class="bg-green-600 text-white p-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 class="text-2xl font-bold">EcoExchange</h1>
+            <nav>
+                <ul class="flex space-x-4">
+                    <li><a class="hover:underline" href="#">Home</a></li>
+                    <li><a class="hover:underline" href="#">Shop</a></li>
+                    <li><a class="hover:underline" href="#">About Us</a></li>
+                    <li><a class="hover:underline" href="#">Contact</a></li>
+                </ul>
+            </nav>
+            <button id="sell-product-btn" class="bg-white text-green-600 px-4 py-2 rounded">Sell Your Product</button>
+        </div>
+    </header>
+
+    <main class="container mx-auto mt-8">
+        <!-- Featured Products Section -->
+        <section class="mb-8">
+            <div class="bg-white p-6 rounded-lg shadow-lg">
+                <h2 class="text-3xl font-bold mb-4">Featured Products</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div class="bg-gray-200 p-4 rounded-lg">
+                        <img src="https://storage.googleapis.com/a1aa/image/sL2i4vXqIHZbEBgVyUqx3RPbfphH7XYLkB6U0nPYmPSYlp4JA.jpg" alt="Recycled Water Bottle" class="w-full h-48 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold">Recycled Water Bottle</h3>
+                        <p class="text-gray-700">$15.00</p>
+                        <button class="bg-green-600 text-white px-4 py-2 rounded mt-2 buy-btn">Buy Now</button>
+                    </div>
+                    <div class="bg-gray-200 p-4 rounded-lg">
+                        <img src="https://storage.googleapis.com/a1aa/image/fS4eYeBbZXJRTpZjZhjHQJVnU5wjHR51NJQDRU3T6WAwVminA.jpg" alt="Upcycled Wooden Chair" class="w-full h-48 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold">Upcycled Wooden Chair</h3>
+                        <p class="text-gray-700">$120.00</p>
+                        <button class="bg-green-600 text-white px-4 py-2 rounded mt-2 buy-btn">Buy Now</button>
+                    </div>
+                  <div class="bg-gray-200 p-4 rounded-lg">
+       <img alt="Eco-friendly tote bag made from recycled materials" class="w-full h-48 object-cover rounded-lg mb-4" height="300" src="https://storage.googleapis.com/a1aa/image/mEv9z0aDk1aeJK6G7NozYFKIuwA8OmhgAjS8rMjTllydlp4JA.jpg" width="300"/>
+       <h3 class="text-xl font-bold">
+        Eco-friendly Tote Bag
+       </h3>
+       <p class="text-gray-700">
+        $25.00
+       </p>
+       <button class="bg-green-600 text-white px-4 py-2 rounded mt-2">
+        Add to Cart
+       </button>
+      </div>
+      <div class="bg-gray-200 p-4 rounded-lg">
+       <img alt="Recycled glass vase with a unique design" class="w-full h-48 object-cover rounded-lg mb-4" height="300" src="https://storage.googleapis.com/a1aa/image/eMp6DcZhSfhSikvTJUKYsXcayNB2CIswxQdHE3QQtXF0KTxTA.jpg" width="300"/>
+       <h3 class="text-xl font-bold">
+        Recycled Glass Vase
+       </h3>
+       <p class="text-gray-700">
+        $35.00
+       </p>
+       <button class="bg-green-600 text-white px-4 py-2 rounded mt-2">
+        Add to Cart
+       </button>
+      </div>
+                  <div class="bg-gray-200 p-4 rounded-lg">
+       <img alt="Upcycled denim jacket with a trendy look" class="w-full h-48 object-cover rounded-lg mb-4" height="300" src="https://storage.googleapis.com/a1aa/image/LjYhb0JI8Y4CFpCtdyBu2E0TLAB8WY04R8gg0LUi17EwyU8E.jpg" width="300"/>
+       <h3 class="text-xl font-bold">
+        Upcycled Denim Jacket
+       </h3>
+       <p class="text-gray-700">
+        $60.00
+       </p>
+       <button class="bg-green-600 text-white px-4 py-2 rounded mt-2">
+        Add to Cart
+       </button>
+      </div>
+      <div class="bg-gray-200 p-4 rounded-lg">
+       <img alt="Recycled paper notebook with a minimalist design" class="w-full h-48 object-cover rounded-lg mb-4" height="300" src="https://storage.googleapis.com/a1aa/image/c12yMjhsq94EF57j6WYr0rboVX3s6e75VEinRd16jaNfKTxTA.jpg" width="300"/>
+       <h3 class="text-xl font-bold">
+        Recycled Paper Notebook
+       </h3>
+       <p class="text-gray-700">
+        $10.00
+       </p>
+       <button class="bg-green-600 text-white px-4 py-2 rounded mt-2">
+        Add to Cart
+       </button>
+      </div>
+      <div class="bg-gray-200 p-4 rounded-lg">
+       <img alt="Eco-friendly bamboo toothbrush" class="w-full h-48 object-cover rounded-lg mb-4" height="300" src="https://storage.googleapis.com/a1aa/image/rrt92mCOxdKGKJf6oAQJQDzJhRZ3AVCpOs04cuU0EmVZlp4JA.jpg" width="300"/>
+       <h3 class="text-xl font-bold">
+        Bamboo Toothbrush
+       </h3>
+       <p class="text-gray-700">
+        $5.00
+       </p>
+       <button class="bg-green-600 text-white px-4 py-2 rounded mt-2">
+        Add to Cart
+       </button>
+      </div>
+      <div class="bg-gray-200 p-4 rounded-lg">
+       <img alt="Upcycled leather wallet with a sleek design" class="w-full h-48 object-cover rounded-lg mb-4" height="300" src="https://storage.googleapis.com/a1aa/image/fue0o8GdcUkA8UtTJpeH1Ghp0bXTrmJKEAvEFzjC6OvFWminA.jpg" width="300"/>
+       <h3 class="text-xl font-bold">
+        Upcycled Leather Wallet
+       </h3>
+       <p class="text-gray-700">
+        $40.00
+       </p>
+       <button class="bg-green-600 text-white px-4 py-2 rounded mt-2">
+        Add to Cart
+       </button>
+      </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- My Products Section -->
+        <section id="my-products" class="mb-8">
+            <div class="bg-white p-6 rounded-lg shadow-lg">
+                <h2 class="text-3xl font-bold mb-4">My Products</h2>
+                <div id="user-products-list" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"></div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Sell Product Modal -->
+    <div id="sell-product-modal" class="flex">
+        <div id="sell-product-form">
+            <h2 class="text-2xl font-bold mb-4">Add Your Product</h2>
+            <input type="file" id="product-image" class="mb-4 w-full" accept="image/*">
+            <input type="text" id="product-title" placeholder="Product Title" class="mb-4 p-2 border w-full rounded">
+            <input type="number" id="product-price" placeholder="Product Price ($)" class="mb-4 p-2 border w-full rounded">
+            <button id="submit-product" class="bg-green-600 text-white px-4 py-2 rounded w-full">Submit</button>
+        </div>
+    </div>
+
+    <!-- Success Message -->
+    <div id="success-message">Product successfully added!</div>
+
+    <footer class="bg-green-600 text-white p-4 mt-8">
+        <div class="container mx-auto text-center">
+            <p>© 2023 EcoExchange. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        const sellProductBtn = document.getElementById('sell-product-btn');
+        const sellProductModal = document.getElementById('sell-product-modal');
+        const submitProductBtn = document.getElementById('submit-product');
+        const productImageInput = document.getElementById('product-image');
+        const productTitleInput = document.getElementById('product-title');
+        const productPriceInput = document.getElementById('product-price');
+        const userProductsList = document.getElementById('user-products-list');
+        const successMessage = document.getElementById('success-message');
+
+        sellProductBtn.addEventListener('click', () => {
+            sellProductModal.style.display = 'flex';
+        });
+
+        sellProductModal.addEventListener('click', (event) => {
+            if (event.target === sellProductModal) {
+                sellProductModal.style.display = 'none';
+            }
+        });
+
+        submitProductBtn.addEventListener('click', () => {
+            const imageFile = productImageInput.files[0];
+            const title = productTitleInput.value;
+            const price = productPriceInput.value;
+
+            if (!imageFile || !title || !price) {
+                alert('Please fill in all fields.');
+                return;
+            }
+
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                const productHTML = `
+                    <div class="bg-gray-200 p-4 rounded-lg">
+                        <img src="${e.target.result}" alt="${title}" class="w-full h-48 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold">${title}</h3>
+                        <p class="text-gray-700">$${price}</p>
+                        <button class="bg-green-600 text-white px-4 py-2 rounded mt-2 buy-btn">Buy Now</button>
+                    </div>
+                `;
+                userProductsList.insertAdjacentHTML('beforeend', productHTML);
+                sellProductModal.style.display = 'none';
+                successMessage.style.display = 'block';
+
+                setTimeout(() => {
+                    successMessage.style.display = 'none';
+                }, 2000);
+            };
+
+            reader.readAsDataURL(imageFile);
+        });
+
+        document.addEventListener('click', (event) => {
+            if (event.target.classList.contains('buy-btn')) {
+                alert('Thank you for your purchase!');
+            }
+        });
+    </script>
+</body>
+</html>

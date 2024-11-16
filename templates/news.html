@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Environmental News</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"/>
+    <style>
+        /* Custom Hover and Animation Styles */
+        .news-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .news-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        }
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease forwards;
+        }
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body class="font-roboto bg-gray-100">
+    <header class="bg-white shadow">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <h1 class="text-2xl font-bold text-green-600">Environmental News</h1>
+            <i class="fas fa-sync-alt text-gray-700 cursor-pointer hover:text-green-600 transition-colors" id="refresh-btn"></i>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-8">
+        <div id="news-feed" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- News articles will be dynamically inserted here -->
+        </div>
+    </main>
+
+    <script>
+        // Fetch and display news articles with animation
+        async function fetchNews() {
+            const response = await fetch('/api/news');
+            const articles = await response.json();
+            const newsFeed = document.getElementById('news-feed');
+            newsFeed.innerHTML = '';
+
+            articles.forEach((article, index) => {
+                const articleDiv = document.createElement('div');
+                articleDiv.className = `news-card bg-white shadow rounded overflow-hidden fade-in`;
+                articleDiv.style.animationDelay = `${index * 0.1}s`;
+
+                articleDiv.innerHTML = `
+                    <div class="w-full h-48 bg-gray-300 flex items-center justify-center">
+                        <img src="${article.urlToImage || 'https://via.placeholder.com/400'}" alt="Article Image" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-4">
+                        <h2 class="text-lg font-bold">${article.title}</h2>
+                        <p class="text-sm text-gray-500">${article.source.name} - ${new Date(article.publishedAt).toLocaleDateString()}</p>
+                        <p class="text-sm text-gray-700 mt-2">${article.description || 'No description available.'}</p>
+                        <a href="${article.url}" target="_blank" class="text-green-600 mt-4 block hover:underline">Read more</a>
+                    </div>
+                `;
+
+                newsFeed.appendChild(articleDiv);
+            });
+        }
+
+        // Refresh news on button click
+        document.getElementById('refresh-btn').addEventListener('click', fetchNews);
+
+        // Load news on page load
+        window.onload = fetchNews;
+    </script>
+</body>
+</html>

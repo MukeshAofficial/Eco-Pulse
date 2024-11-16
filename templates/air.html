@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Environmental Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #a8e063, #56ab2f);
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .card {
+            background-color: #ffffff;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-header {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .card-body {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .card-body div {
+            flex: 1;
+            margin: 0 10px;
+        }
+
+        .chart-container {
+            height: 300px;
+        }
+
+        .text-black {
+            color: black;
+        }
+
+        .forecast-data {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        .forecast-data div {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+
+<body class="p-8">
+    <div class="container">
+        <h1 class="text-4xl font-semibold text-center text-white mb-8">Environmental Dashboard</h1>
+        
+        <!-- Search Bar Section -->
+        <div class="flex justify-between items-center mb-8">
+            <div class="relative w-2/3">
+                <input id="cityInput" class="w-full py-2 pl-4 pr-10 rounded-full bg-white text-black focus:outline-none" placeholder="Search City..." type="text" />
+                <i class="fas fa-search absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 cursor-pointer"></i>
+            </div>
+            <div>
+                <button onclick="fetchWeatherData()" class="bg-green-600 text-white p-2 rounded-full ml-4">
+                    Search
+                </button>
+            </div>
+        </div>
+
+        <!-- Weather Data Section -->
+        <div id="weatherData" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
+            <!-- Left Section: Air Quality and Weather Data -->
+            <div class="col-span-1 bg-white p-6 rounded-lg">
+                <h2 class="text-xl font-semibold text-green-600 mb-2">Weather and Air Quality Data</h2>
+                <div id="airQualityData" class="text-black">
+                    <!-- Air Quality Data will be inserted here -->
+                </div>
+                <div id="forecastData" class="text-black mt-8">
+                    <!-- Forecast Data will be inserted here -->
+                </div>
+            </div>
+
+            <!-- Right Section: Air Quality Chart -->
+            <div class="col-span-1 bg-white p-6 rounded-lg">
+                <h3 class="text-xl font-semibold text-green-600 mb-4">Air Quality Chart</h3>
+                <div class="chart-container">
+                    <canvas id="airQualityChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        async function fetchWeatherData() {
+            const city = document.getElementById('cityInput').value || 'New York';
+            const response = await fetch(`/get_weather?city=${city}`);
+            const data = await response.json();
+            if (data.weather_data) {
+                displayWeatherData(data);
+            }
+        }
+
+        function displayWeatherData(data) {
+            const weather = data.weather_data;
+            const airQuality = data.air_quality_data;
+            const weatherContainer = document.getElementById('weatherData');
+
+            // Display Air Quality Data on the Left Side
+            const airQualityContainer = document.getElementById('airQualityData');
+            airQualityContainer.innerHTML = `
+                <div class="mb-4">
+                    <strong>AQI: </strong><span class="font-bold text-white ${getAqiColor(airQuality.aqi)}">${airQuality.aqi}</span>
+                </div>
+                <div class="mb-4">
+                    <strong>PM2.5: </strong><span class="font-bold text-black">${airQuality.pm2_5} µg/m³</span>
+                </div>
+                <div class="mb-4">
+                    <strong>PM10: </strong><span class="font-bold text-black">${airQuality.pm10} µg/m³</span>
+                </div>
+                <div class="mb-4">
+                    <strong>CO: </strong><span class="font-bold text-black">${airQuality.co} µg/m³</span>
+                </div>
+                <div class="mb-4">
+                    <strong>SO2: </strong><span class="font-bold text-black">${airQuality.so2} µg/m³</span>
+                </div>
+                <div class="mb-4">
+                    <strong>NO: </strong><span class="font-bold text-black">${airQuality.no} µg/m³</span>
+                </div>
+            `;
+            
+            // Display Weather Forecast Data
+            const forecastContainer = document.getElementById('forecastData');
+            forecastContainer.innerHTML = `
+                <div class="forecast-data">
+                    <div><strong>Forecast in ${weather.city}, US</strong></div>
+                    <div><strong>Date: </strong>${new Date(weather.date * 1000).toLocaleString()}</div>
+                    <div><strong>Temperature: </strong>${weather.temperature}°C / ${convertToFahrenheit(weather.temperature)}°F</div>
+                    <div><strong>High: </strong>${weather.high}°C / ${convertToFahrenheit(weather.high)}°F</div>
+                    <div><strong>Low: </strong>${weather.low}°C / ${convertToFahrenheit(weather.low)}°F</div>
+                    <div><strong>Weather: </strong>${weather.weather}</div>
+                    <div><strong>Wind: </strong>${weather.wind_speed} m/s</div>
+                    <div><strong>Humidity: </strong>${weather.humidity}%</div>
+                    <div><strong>Cloudiness: </strong>${weather.cloudiness}%</div>
+                    <div><strong>Sunrise: </strong>${new Date(weather.sunrise * 1000).toLocaleTimeString()}</div>
+                    <div><strong>Sunset: </strong>${new Date(weather.sunset * 1000).toLocaleTimeString()}</div>
+                </div>
+            `;
+            
+            // Render Air Quality Chart
+            renderAirQualityChart(airQuality);
+        }
+
+        function getAqiColor(aqi) {
+            if (aqi == 1) return 'bg-green-500';
+            if (aqi == 2) return 'bg-yellow-500';
+            if (aqi == 3) return 'bg-orange-500';
+            if (aqi == 4) return 'bg-red-500';
+            return 'bg-purple-500';
+        }
+
+        function convertToFahrenheit(celsius) {
+            return (celsius * 9/5) + 32;
+        }
+
+        function renderAirQualityChart(airQuality) {
+            const ctx = document.getElementById('airQualityChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['PM2.5', 'PM10', 'CO', 'SO2', 'NO'],
+                    datasets: [{
+                        label: 'Air Quality Components',
+                        data: [airQuality.pm2_5, airQuality.pm10, airQuality.co, airQuality.so2, airQuality.no],
+                        backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>

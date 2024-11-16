@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eco Sustainability Chatbot</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #e0f7e9;
+            color: #2d3e34;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .container {
+            display: flex;
+            width: 80%;
+            height: 80%;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+            border-radius: 15px;
+            overflow: hidden;
+            animation: fadeIn 1s ease-in;
+            backdrop-filter: blur(5px);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .sidebar {
+            width: 30%;
+            background: linear-gradient(135deg, #4caf50, #388e3c);
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.3);
+            position: relative;
+        }
+
+        .sidebar .logo {
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #ffffff;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+            text-align: center;
+        }
+
+        .sidebar p {
+            font-size: 16px;
+            line-height: 1.5;
+            color: #f0f4c3;
+            text-align: justify;
+        }
+
+        .chat-container {
+            width: 70%;
+            display: flex;
+            flex-direction: column;
+            background: rgba(240, 255, 240, 0.9);
+            padding: 10px;
+        }
+
+        .chat-header {
+            background-color: #66bb6a;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            font-size: 26px;
+            border-radius: 10px 10px 0 0;
+        }
+
+        .chat-box {
+            flex-grow: 1;
+            padding: 20px;
+            overflow-y: auto;
+            background: #e8f5e9;
+            border-radius: 0 0 10px 10px;
+        }
+
+        .chat-box .message {
+            margin: 10px 0;
+            padding: 12px;
+            border-radius: 8px;
+            max-width: 75%;
+            position: relative;
+        }
+
+        .chat-box .user {
+            background-color: #81c784;
+            align-self: flex-end;
+            color: white;
+            border-top-left-radius: 10px;
+        }
+
+        .chat-box .bot {
+            background-color: #a5d6a7;
+            align-self: flex-start;
+            color: #2d3e34;
+            border-top-right-radius: 10px;
+        }
+
+        .chat-input {
+            display: flex;
+            padding: 15px;
+            border-top: 2px solid #66bb6a;
+            background: #c8e6c9;
+        }
+
+        .chat-input input {
+            flex-grow: 1;
+            padding: 12px;
+            border: 1px solid #66bb6a;
+            border-radius: 5px;
+            margin-right: 10px;
+            font-size: 16px;
+        }
+
+        .chat-input button {
+            padding: 12px 18px;
+            border: none;
+            background-color: #66bb6a;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .chat-input button:hover {
+            background-color: #43a047;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                height: auto;
+            }
+
+            .sidebar, .chat-container {
+                width: 100%;
+                height: auto;
+            }
+
+            .chat-header {
+                font-size: 24px;
+            }
+
+            .chat-input input, .chat-input button {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <div class="logo">Eco Sustainability Chatbot</div>
+            <p>Welcome to our Eco Chatbot! Learn about environmental sustainability, get tips on reducing waste, recycling, and upcycling. Ask questions about eco-friendly practices and how you can contribute to a greener planet.</p>
+        </div>
+        <div class="chat-container">
+            <div class="chat-header">
+                Eco Sustainability Chatbot
+            </div>
+            <div class="chat-box" id="chat-box">
+                <!-- Messages will appear here -->
+            </div>
+            <div class="chat-input">
+                <input type="text" id="user-input" placeholder="Ask about recycling, upcycling, or sustainability tips...">
+                <button id="send-button">Send</button>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.getElementById('send-button').addEventListener('click', function() {
+            const userInput = document.getElementById('user-input').value;
+            if (userInput.trim() !== '') {
+                addMessage('user', userInput);
+                document.getElementById('user-input').value = '';
+                fetch('/get_response', {
+                    method: 'POST',
+                    body: JSON.stringify({ message: userInput }),
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                })
+                .then(response => response.json())
+                .then(data => {
+                    addMessage('bot', data.response);
+                });
+            }
+        });
+
+        function addMessage(sender, text) {
+            const chatBox = document.getElementById('chat-box');
+            const message = document.createElement('div');
+            message.classList.add('message', sender);
+            message.textContent = text;
+            chatBox.appendChild(message);
+            chatBox.scrollTop = chatBox.scrollHeight;
+        }
+
+        document.getElementById('user-input').addEventListener('keypress', function(event) {
+            if (event.key === 'Enter') {
+                document.getElementById('send-button').click();
+            }
+        });
+    </script>
+</body>
+</html>
